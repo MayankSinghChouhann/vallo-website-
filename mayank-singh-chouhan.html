@@ -55,15 +55,20 @@
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #1ABC9C, #4B2E83);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 80px;
-  font-weight: 700;
+  object-fit: cover;
   box-shadow: 0 30px 60px rgba(26,188,156,0.25);
   margin: auto;
+  display: block;
+  background: #ffffff;
+  padding: 6px;
+  border: 4px solid rgba(26,188,156,0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.founder-avatar-large:hover {
+  transform: scale(1.03);
+  border-color: #1ABC9C;
+  box-shadow: 0 35px 70px rgba(26,188,156,0.35);
 }
 
 .connect-buttons {
@@ -175,7 +180,7 @@
 <section class="founder-hero">
   <div class="container founder-grid">
     <div>
-      <div class="founder-avatar-large">MS</div>
+      <img class="founder-avatar-large" src="images/Mayank.png" alt="Mayank Singh Chouhan">
     </div>
 
     <div class="founder-info">
