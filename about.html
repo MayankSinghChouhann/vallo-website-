@@ -273,10 +273,17 @@
 <header class="navbar">
   <div class="container nav">
 
-    <img src="images/app-mockup.png" class="full-logo">
+    <button class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.navbar nav').classList.toggle('active')" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a href="index.html"><img src="images/app-mockup.png" class="full-logo"></a>
 
     <nav>
       <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
       <a href="#story">Our Story</a>
       <a href="#founder">Founder</a>
       <a href="#mission">Mission</a>

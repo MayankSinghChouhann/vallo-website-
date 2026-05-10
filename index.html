@@ -26,16 +26,17 @@
 <!-- NAV -->
 <header class="navbar">
   <div class="container nav">
-   <img src="images/app-mockup.png" class="full-logo">
-
     <button class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.navbar nav').classList.toggle('active')" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
+    <img src="images/app-mockup.png" class="full-logo">
+
     <nav>
       <a href="#how">How it Works</a>
+      <a href="services.html">Services</a>
       <a href="#features">Features</a>
       <a href="#advantage">Advantage</a>
       <a href="about.html">About</a>
@@ -44,8 +45,8 @@
     </nav>
 
     <div class="nav-cta">
-  <button class="btn glow">Launching Soon</button>
-</div>
+      <button class="btn glow">Launching Soon</button>
+    </div>
   </div>
 </header>
 
@@ -249,7 +250,7 @@
         </div>
 
         <div class="back">
-          Combine bus, metro & cab into one smart route.
+          Combine local buses, electric buses, vikram, magic &amp; local auto rickshaw into one smart route.
         </div>
 
       </div>
@@ -321,35 +322,46 @@
 
 <section class="section" id="team">
 
-  <h2>Meet Our Team</h2>
+  <div class="team-header">
+    <span class="section-eyebrow">OUR LEADERSHIP</span>
+    <h2>Meet Our <span class="highlight-teal">Team</span></h2>
+    <p class="section-sub">Talented individuals passionate about transforming mobility</p>
+  </div>
 
-  <p class="team-subtitle">
-    Talented individuals passionate about transforming mobility
-  </p>
+  <div class="team-grid">
 
-  <div class="team-wrapper">
-
-    <div class="team-scroll">
-
-      <div class="team-card">
+    <div class="team-card reveal-card" data-delay="0">
+      <div class="team-card-glow"></div>
+      <div class="team-avatar-wrap">
         <img class="avatar" src="images/Mayank.png" alt="Mayank Singh Chouhan">
-        <h3>Mayank Singh Chouhan</h3>
-        <p>Founder and CEO</p>
-        <a href="mayank-singh-chouhan.html" style="display:inline-block; margin-top:10px; color:#1ABC9C; font-weight:600; text-decoration:none;">Read Profile →</a>
+        <div class="avatar-ring"></div>
       </div>
+      <h3>Mayank Singh Chouhan</h3>
+      <p class="team-role">Founder &amp; CEO</p>
+      <div class="team-divider"></div>
+      <a href="mayank-singh-chouhan.html" class="team-profile-link">Read Profile <span>→</span></a>
+    </div>
 
-      <div class="team-card">
+    <div class="team-card reveal-card" data-delay="100">
+      <div class="team-card-glow"></div>
+      <div class="team-avatar-wrap">
         <img class="avatar" src="images/Sandiye.png" alt="Sandiye Sarthak">
-        <h3>Sandiye Sarthak</h3>
-        <p>Co-Founder & Tech Lead</p>
+        <div class="avatar-ring"></div>
       </div>
+      <h3>Sandiye Sarthak</h3>
+      <p class="team-role">Co-Founder &amp; Tech Lead</p>
+      <div class="team-divider"></div>
+    </div>
 
-      <div class="team-card">
+    <div class="team-card reveal-card" data-delay="200">
+      <div class="team-card-glow"></div>
+      <div class="team-avatar-wrap">
         <img class="avatar" src="images/arnav.png" alt="Arnav Thatliyal">
-        <h3>Arnav Thatliyal</h3>
-        <p>Operations & Strategy</p>
+        <div class="avatar-ring"></div>
       </div>
-
+      <h3>Arnav Thatliyal</h3>
+      <p class="team-role">Co-Founder &amp; Operations &amp; Strategy</p>
+      <div class="team-divider"></div>
     </div>
 
   </div>
@@ -476,27 +488,24 @@ window.addEventListener("resize", () => {
 });
 </script>
 
+<!-- Scroll reveal animations -->
 <script>
-const slider = document.querySelector(".compare-slider");
-const handle = document.querySelector(".slider-handle");
+const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => {
+        entry.target.classList.add('revealed');
+      }, delay);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
 
-let isDragging = false;
-
-handle.addEventListener("mousedown", () => isDragging = true);
-window.addEventListener("mouseup", () => isDragging = false);
-
-window.addEventListener("mousemove", (e) => {
-  if(!isDragging) return;
-
-  const rect = slider.getBoundingClientRect();
-  let x = e.clientX - rect.left;
-
-  if(x < 0) x = 0;
-  if(x > rect.width) x = rect.width;
-
-  const percent = (x / rect.width) * 100;
-
-  handle.style.left = percent + "%";
+document.querySelectorAll('.reveal-card, .compare-panel, .step-premium, .section-eyebrow').forEach(el => {
+  el.classList.add('reveal-init');
+  revealObserver.observe(el);
 });
 </script>
 <script>
