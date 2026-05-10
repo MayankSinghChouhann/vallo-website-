@@ -1055,7 +1055,7 @@ footer {
   font-size: 13px;
   margin-top: 10px;
 }
-section:last-of-type:not(.cta):not(.about-cta) {
+section:last-of-type {
   padding-bottom: 0;
 }
 .badge {
@@ -1455,38 +1455,21 @@ img.avatar {
     display: none;
   }
 
-  /* LOGO MOBILE - professional alignment */
-  .nav-logo-wrap {
-    position: static;
-    transform: none;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-    order: 1;
-  }
-
+  /* LOGO MOBILE - centered */
   .full-logo {
-    width: 100px !important;
-    height: auto;
+    width: 110px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .nav {
-    min-height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    position: relative;
+    min-height: 50px;
   }
 
   .hamburger {
-    display: flex;
-    order: 3;
-    margin-left: 0;
-  }
-
-  .nav-cta {
-    order: 2;
-    margin-left: auto;
+    order: -1;
   }
 
   /* HERO */
