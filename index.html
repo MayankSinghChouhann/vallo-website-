@@ -425,14 +425,19 @@
   <!-- FORM -->
   <div class="form-wrapper">
 
-    <form class="contact-form">
+    <form class="contact-form" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST">
       <h3>Get in Touch</h3>
 
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea placeholder="Your Message"></textarea>
+      <!-- FormSubmit configuration -->
+      <input type="hidden" name="_subject" value="New Contact Message from Vallo Website!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://vallo.in">
 
-      <button class="btn primary">Send Message</button>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit" class="btn primary">Send Message</button>
     </form>
 
   </div>
@@ -507,29 +512,7 @@ document.querySelectorAll('.reveal-card, .compare-panel, .step-premium, .section
   revealObserver.observe(el);
 });
 </script>
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  const response = await fetch("http://localhost:3000/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ name, email, message })
-  });
-
-  const data = await response.json();
-
-  alert(data.message);
-
-  this.reset();
-});
-</script>
 
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
