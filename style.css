@@ -1520,6 +1520,10 @@ img.avatar {
     transform: translate(-50%, -50%);
   }
 
+  .full-logo:hover {
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+
   .nav {
     position: relative;
     min-height: 60px;
