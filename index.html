@@ -596,5 +596,19 @@ document.getElementById("contactForm").addEventListener("submit", async function
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 
+<script>
+// Close mobile menu when a nav link is clicked
+document.querySelectorAll('.navbar nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.navbar nav');
+    if (hamburger && nav) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
