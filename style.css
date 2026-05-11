@@ -104,6 +104,10 @@ nav a:hover {
   display: block;
 
   transition: 0.3s ease;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .full-logo:hover{
@@ -276,6 +280,20 @@ nav a:hover {
 
 .primary:hover {
   transform: translateY(-2px);
+}
+
+.secondary {
+  background: #ffffff;
+  color: #1ABC9C;
+  border: 1px solid rgba(26,188,156,0.2);
+  box-shadow: 0 4px 15px rgba(26,188,156,0.1);
+  font-weight: 600;
+}
+
+.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26,188,156,0.2);
+  border-color: rgba(26,188,156,0.4);
 }
 
 .outline {
@@ -1419,6 +1437,23 @@ img.avatar {
 .reveal-init.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===========================
+   TABLET / DESKTOP MODE OVERLAP FIX
+=========================== */
+@media (min-width: 769px) and (max-width: 1150px) {
+  nav a {
+    margin: 0 5px;
+    font-size: 14px;
+  }
+  .full-logo {
+    width: 120px;
+  }
+  .nav-cta .btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
 }
 
 /* ===========================
