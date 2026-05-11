@@ -466,6 +466,15 @@ document.getElementById('betaForm').addEventListener('submit', async function(e)
   const city = form.querySelector('input[name="city"]').value;
   const role = form.querySelector('input[name="role"]:checked').value;
 
+  // Push GA4 event for form submit attempt
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'beta_form_submit',
+    'page_location': window.location.href,
+    'user_type': role,
+    'city': city
+  });
+
   // Set loading state
   btn.classList.add('loading');
   btn.disabled = true;
@@ -490,6 +499,13 @@ document.getElementById('betaForm').addEventListener('submit', async function(e)
     const data = await response.json();
 
     if (data.success) {
+      // Push GA4 event for successful signup
+      window.dataLayer.push({
+        'event': 'beta_signup_success',
+        'page_location': window.location.href,
+        'user_type': role,
+        'city': city
+      });
       document.getElementById('form-container').style.display = 'none';
       document.getElementById('success-screen').style.display = 'block';
     } else {
