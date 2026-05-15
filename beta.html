@@ -387,7 +387,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Be among the first users to experience smarter local mobility with Vallo.</p>
       </div>
 
-      <form id="betaForm">
+      <form id="betaForm" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST">
+        <!-- FormSubmit Config -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://vallo.in/beta.html?success=true">
+        <input type="hidden" name="_subject" value="New Beta Request!">
+
         <div class="form-group">
           <label>Name</label>
           <input type="text" name="name" class="form-input" placeholder="Enter your full name" required>
@@ -454,72 +459,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Script to handle form submission via FormSubmit AJAX -->
 <script>
-document.getElementById('betaForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  
-  const form = e.target;
-  const btn = document.getElementById('submitBtn');
-  
-  // Get values for analytics
-  const name = form.querySelector('input[name="name"]').value;
-  const email = form.querySelector('input[name="email"]').value;
-  const city = form.querySelector('input[name="city"]').value;
-  const role = form.querySelector('input[name="role"]:checked').value;
+// Check for success parameter in URL to show success screen
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    
+    // Remove the query param from URL without refreshing
+    const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.pushState({path:newurl},'',newurl);
+  }
+});
 
-  // Push GA4 event for form submit attempt
+document.getElementById('betaForm').addEventListener('submit', function(e) {
+  const btn = document.getElementById('submitBtn');
+  const role = this.querySelector('input[name="role"]:checked').value;
+  
+  // Update subject dynamically before submit
+  this.querySelector('input[name="_subject"]').value = "New Beta Request: " + role;
+
+  // Push GA4 event
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     'event': 'beta_form_submit',
     'page_location': window.location.href,
-    'user_type': role,
-    'city': city
+    'user_type': role
   });
 
-  // Set loading state
+  // Set loading state (form will navigate away shortly)
   btn.classList.add('loading');
   btn.disabled = true;
-  const originalText = btn.childNodes[0].nodeValue;
   btn.childNodes[0].nodeValue = "Submitting... ";
-
-  try {
-    const formData = new FormData(form);
-    formData.append('_captcha', 'false');
-    formData.append('_subject', "New Beta Request: " + role);
-
-    // Use URLSearchParams for application/x-www-form-urlencoded (CORS-friendly)
-    const params = new URLSearchParams(formData);
-
-    const response = await fetch("https://formsubmit.co/ajax/vallo.mobility@gmail.com", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept": "application/json"
-      },
-      body: params.toString()
-    });
-
-    const data = await response.json();
-
-    if (data.success === "true" || data.success === true) {
-      // Push GA4 event for successful signup
-      window.dataLayer.push({
-        'event': 'beta_signup_success',
-        'page_location': window.location.href,
-        'user_type': role,
-        'city': city
-      });
-      document.getElementById('form-container').style.display = 'none';
-      document.getElementById('success-screen').style.display = 'block';
-    } else {
-      throw new Error(data.message || "Failed to submit");
-    }
-  } catch (error) {
-    console.error("FormSubmit Error:", error);
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    btn.childNodes[0].nodeValue = originalText;
-    alert("Submission failed. Please ensure you have verified your email with FormSubmit or try again later.");
-  }
 });
 
 // Close mobile menu when a nav link is clicked
