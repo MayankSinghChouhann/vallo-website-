@@ -460,7 +460,7 @@ document.getElementById('betaForm').addEventListener('submit', async function(e)
   const form = e.target;
   const btn = document.getElementById('submitBtn');
   
-  // Get values
+  // Get values for analytics
   const name = form.querySelector('input[name="name"]').value;
   const email = form.querySelector('input[name="email"]').value;
   const city = form.querySelector('input[name="city"]').value;
@@ -478,27 +478,31 @@ document.getElementById('betaForm').addEventListener('submit', async function(e)
   // Set loading state
   btn.classList.add('loading');
   btn.disabled = true;
+  const originalText = btn.childNodes[0].nodeValue;
   btn.childNodes[0].nodeValue = "Submitting... ";
 
   try {
+    const formData = new FormData(form);
+    formData.append('_captcha', 'false');
+    formData.append('_subject', "New Beta Request: " + role);
+
+    // Convert FormData to JSON for the AJAX endpoint
+    const object = {};
+    formData.forEach((value, key) => object[key] = value);
+    const json = JSON.stringify(object);
+
     const response = await fetch("https://formsubmit.co/ajax/vallo.mobility@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({
-        _subject: "New Beta Request: " + role,
-        name: name,
-        email: email,
-        city: city,
-        role: role
-      })
+      body: json
     });
 
     const data = await response.json();
 
-    if (data.success) {
+    if (data.success === "true" || data.success === true) {
       // Push GA4 event for successful signup
       window.dataLayer.push({
         'event': 'beta_signup_success',
@@ -509,13 +513,14 @@ document.getElementById('betaForm').addEventListener('submit', async function(e)
       document.getElementById('form-container').style.display = 'none';
       document.getElementById('success-screen').style.display = 'block';
     } else {
-      throw new Error("Failed to submit");
+      throw new Error(data.message || "Failed to submit");
     }
   } catch (error) {
+    console.error("FormSubmit Error:", error);
     btn.classList.remove('loading');
     btn.disabled = false;
-    btn.childNodes[0].nodeValue = "Error! Try Again ";
-    alert("Something went wrong! Please try again.");
+    btn.childNodes[0].nodeValue = originalText;
+    alert("Submission failed. Please ensure you have verified your email with FormSubmit or try again later.");
   }
 });
 
