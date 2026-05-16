@@ -437,13 +437,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- FORM -->
   <div class="form-wrapper">
 
-    <form id="contactForm" class="contact-form" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST">
+    <form id="contactForm" class="contact-form">
       <h3>Get in Touch</h3>
 
       <!-- FormSubmit configuration -->
       <input type="hidden" name="_subject" value="New Contact Message from Vallo Website!">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://vallo.in/index.html?contact_success=true#contact">
 
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -527,12 +526,33 @@ document.querySelectorAll('.reveal-card, .compare-panel, .step-premium, .section
 
 <!-- FormSubmit AJAX & Success Animation -->
 <script>
-// Check for success parameter in URL to show success animation
-window.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('contact_success') === 'true') {
-    const form = document.getElementById("contactForm");
-    if (form) {
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = this;
+  const btn = this.querySelector("button[type='submit']");
+  
+  // Loading state
+  const originalBtnHTML = btn.innerHTML;
+  btn.innerHTML = "Sending... <span class='spinner'></span>";
+  btn.style.opacity = "0.8";
+  btn.style.cursor = "not-allowed";
+  btn.disabled = true;
+
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((value, key) => data[key] = value);
+
+  fetch('https://formsubmit.co/ajax/vallo.mobility@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success === "true" || data.success === true) {
       form.innerHTML = `
         <div class="success-animation">
           <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
@@ -543,21 +563,18 @@ window.addEventListener('DOMContentLoaded', () => {
           <p style="margin-top: 8px; font-size: 15px; opacity: 0.8;">Thanks for reaching out! We will get back to you shortly.</p>
         </div>
       `;
-      // Clean URL
-      const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "#contact";
-      window.history.pushState({path:newurl},'',newurl);
+    } else {
+      throw new Error('Form submission failed');
     }
-  }
-});
-
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  const btn = this.querySelector("button[type='submit']");
-  
-  // Loading state
-  btn.innerHTML = "Sending... <span class='spinner'></span>";
-  btn.style.opacity = "0.8";
-  btn.style.cursor = "not-allowed";
-  btn.disabled = true;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    btn.innerHTML = originalBtnHTML;
+    btn.style.opacity = "1";
+    btn.style.cursor = "pointer";
+    btn.disabled = false;
+    alert('Oops! Something went wrong. Please try again.');
+  });
 });
 </script>
 
