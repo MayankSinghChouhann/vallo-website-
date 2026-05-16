@@ -387,10 +387,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Be among the first users to experience smarter local mobility with Vallo.</p>
       </div>
 
-      <form id="betaForm">
+      <form id="betaForm" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST" target="hidden_iframe">
         <!-- FormSubmit Config -->
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Beta Request!">
+        <input type="hidden" name="_subject" id="emailSubject" value="New Beta Request!">
 
         <div class="form-group">
           <label>Name</label>
@@ -438,6 +438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Request Beta Access <div class="spinner"></div>
         </button>
       </form>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
 
     <!-- Success Screen -->
@@ -472,8 +473,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('betaForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = this;
   const btn = document.getElementById('submitBtn');
   const role = this.querySelector('input[name="role"]:checked').value;
   
@@ -482,10 +481,8 @@ document.getElementById('betaForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   btn.childNodes[0].nodeValue = "Submitting... ";
 
-  const formData = new FormData(form);
-  const data = {};
-  formData.forEach((value, key) => data[key] = value);
-  data['_subject'] = "New Beta Request: " + role;
+  // Update subject dynamically
+  document.getElementById('emailSubject').value = "New Beta Request: " + role;
 
   // Push GA4 event
   window.dataLayer = window.dataLayer || [];
@@ -495,30 +492,12 @@ document.getElementById('betaForm').addEventListener('submit', function(e) {
     'user_type': role
   });
 
-  fetch('https://formsubmit.co/ajax/vallo.mobility@gmail.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success === "true" || data.success === true) {
-      document.getElementById('form-container').style.display = 'none';
-      document.getElementById('success-screen').style.display = 'block';
-    } else {
-      throw new Error('Form submission failed');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    btn.childNodes[0].nodeValue = "Request Beta Access";
-    alert('Oops! Something went wrong. Please try again.');
-  });
+  // Since it's submitting to a hidden iframe, we show success after a short delay
+  setTimeout(() => {
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 1500);
 });
 
 // Close mobile menu when a nav link is clicked
