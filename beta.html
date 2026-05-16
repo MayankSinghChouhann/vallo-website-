@@ -391,6 +391,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- FormSubmit Config -->
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" id="emailSubject" value="New Beta Request!">
+        <input type="text" name="_honey" style="display:none">
 
         <div class="form-group">
           <label>Name</label>
@@ -497,7 +498,7 @@ document.getElementById('betaForm').addEventListener('submit', function(e) {
     document.getElementById('form-container').style.display = 'none';
     document.getElementById('success-screen').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 1500);
+  }, 2000);
 });
 
 // Close mobile menu when a nav link is clicked

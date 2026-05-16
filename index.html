@@ -443,6 +443,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- FormSubmit configuration -->
       <input type="hidden" name="_subject" value="New Contact Message from Vallo Website!">
       <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
 
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -525,6 +526,7 @@ document.querySelectorAll('.reveal-card, .compare-panel, .step-premium, .section
 });
 </script>
 
+<script>
 document.getElementById("contactForm").addEventListener("submit", function(e) {
   const form = this;
   const btn = this.querySelector("button[type='submit']");
@@ -547,7 +549,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         <p style="margin-top: 8px; font-size: 15px; opacity: 0.8;">Thanks for reaching out! We will get back to you shortly.</p>
       </div>
     `;
-  }, 1500);
+  }, 2000);
 });
 </script>
 
