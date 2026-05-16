@@ -474,7 +474,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="beta-stats">
       <div class="beta-stat">
-        <div class="num" id="statUsers">0<span>K+</span></div>
+        <div class="num" id="statUsers">0<span>+</span></div>
         <div class="lbl">Beta Signups</div>
       </div>
       <div class="beta-stat">
@@ -607,7 +607,7 @@ function animateCounterK(el, targetK, duration) {
 const statsObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      animateCounterK(document.getElementById('statUsers'), 10, 1400);
+      animateCounter(document.getElementById('statUsers'), 100, 1400, '+');
       animateCounter(document.getElementById('statCities'), 5, 900, '+');
       animateCounter(document.getElementById('statAccuracy'), 98, 1000, '%');
       statsObserver.disconnect();
