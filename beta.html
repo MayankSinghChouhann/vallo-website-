@@ -387,12 +387,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Be among the first users to experience smarter local mobility with Vallo.</p>
       </div>
 
-      <form id="betaForm" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST" target="hidden_iframe">
-        <!-- FormSubmit Config -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" id="emailSubject" value="New Beta Request!">
-        <input type="text" name="_honey" style="display:none">
-
+      <form id="betaForm">
+        <input type="hidden" name="form_type" value="Beta Request">
+        
         <div class="form-group">
           <label>Name</label>
           <input type="text" name="name" class="form-input" placeholder="Enter your full name" required>
@@ -439,7 +436,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Request Beta Access <div class="spinner"></div>
         </button>
       </form>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
 
     <!-- Success Screen -->
@@ -474,16 +470,18 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('betaForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
   const btn = document.getElementById('submitBtn');
   const role = this.querySelector('input[name="role"]:checked').value;
   
+  // PASTE YOUR GOOGLE SCRIPT URL HERE
+  const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; 
+
   // Set loading state
   btn.classList.add('loading');
   btn.disabled = true;
   btn.childNodes[0].nodeValue = "Submitting... ";
-
-  // Update subject dynamically
-  document.getElementById('emailSubject').value = "New Beta Request: " + role;
 
   // Push GA4 event
   window.dataLayer = window.dataLayer || [];
@@ -493,12 +491,22 @@ document.getElementById('betaForm').addEventListener('submit', function(e) {
     'user_type': role
   });
 
-  // Since it's submitting to a hidden iframe, we show success after a short delay
-  setTimeout(() => {
+  fetch(scriptURL, { 
+    method: 'POST', 
+    body: new FormData(form)
+  })
+  .then(response => {
     document.getElementById('form-container').style.display = 'none';
     document.getElementById('success-screen').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 2000);
+  })
+  .catch(error => {
+    console.error('Error!', error.message);
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    btn.childNodes[0].nodeValue = "Request Beta Access";
+    alert('Submission failed. Please check your internet or try again later.');
+  });
 });
 
 // Close mobile menu when a nav link is clicked

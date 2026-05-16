@@ -437,13 +437,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- FORM -->
   <div class="form-wrapper">
 
-    <form id="contactForm" class="contact-form" action="https://formsubmit.co/vallo.mobility@gmail.com" method="POST" target="contact_iframe">
+    <form id="contactForm" class="contact-form">
+      <input type="hidden" name="form_type" value="Contact Message">
       <h3>Get in Touch</h3>
-
-      <!-- FormSubmit configuration -->
-      <input type="hidden" name="_subject" value="New Contact Message from Vallo Website!">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
 
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -451,7 +447,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <button type="submit" class="btn primary">Send Message</button>
     </form>
-    <iframe name="contact_iframe" id="contact_iframe" style="display:none;"></iframe>
 
   </div>
 
@@ -528,17 +523,24 @@ document.querySelectorAll('.reveal-card, .compare-panel, .step-premium, .section
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
   const form = this;
   const btn = this.querySelector("button[type='submit']");
   
+  // PASTE YOUR GOOGLE SCRIPT URL HERE
+  const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; 
+
   // Loading state
   btn.innerHTML = "Sending... <span class='spinner'></span>";
   btn.style.opacity = "0.8";
   btn.style.cursor = "not-allowed";
   btn.disabled = true;
 
-  // Show success animation after a short delay
-  setTimeout(() => {
+  fetch(scriptURL, { 
+    method: 'POST', 
+    body: new FormData(form)
+  })
+  .then(response => {
     form.innerHTML = `
       <div class="success-animation">
         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
@@ -549,7 +551,15 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         <p style="margin-top: 8px; font-size: 15px; opacity: 0.8;">Thanks for reaching out! We will get back to you shortly.</p>
       </div>
     `;
-  }, 2000);
+  })
+  .catch(error => {
+    console.error('Error!', error.message);
+    btn.innerHTML = "Send Message";
+    btn.style.opacity = "1";
+    btn.style.cursor = "pointer";
+    btn.disabled = false;
+    alert('Oops! Something went wrong. Please try again.');
+  });
 });
 </script>
 
