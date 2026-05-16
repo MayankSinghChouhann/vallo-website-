@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NLFFR9QK');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Vallo | Get in Touch with Our Team</title>
+<meta name="description" content="Have questions about Vallo? Reach out to our team. We'd love to hear from you about partnerships, press, or general inquiries.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vallo.in/contact.html">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+  --teal: #1ABC9C;
+  --teal-light: rgba(26,188,156,0.10);
+  --teal-mid: rgba(26,188,156,0.22);
+  --purple: #4B2E83;
+  --purple-light: rgba(75,46,131,0.07);
+  --slate: #0f172a;
+  --muted: #64748b;
+}
+
+body { background: #f7fbf9; }
+
+.contact-bg {
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse 55% 45% at 5% 15%, rgba(26,188,156,0.09), transparent),
+    radial-gradient(ellipse 45% 55% at 95% 85%, rgba(75,46,131,0.07), transparent),
+    #f7fbf9;
+}
+.contact-orb {
+  position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1;
+  animation: orbDrift 9s ease-in-out infinite alternate;
+}
+.contact-orb-1 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(26,188,156,0.14), transparent 70%);
+  top: -100px; right: -80px;
+}
+.contact-orb-2 {
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(75,46,131,0.09), transparent 70%);
+  bottom: 60px; left: -60px;
+  animation-delay: 4s;
+}
+@keyframes orbDrift {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-24px) scale(1.06); }
+}
+
+/* ── PAGE LAYOUT ── */
+.contact-page {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+}
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  text-align: center;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: headerIn 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
+}
+@keyframes headerIn { to { opacity: 1; transform: translateY(0); } }
+
+.page-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: var(--teal-light);
+  border: 1px solid var(--teal-mid);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.page-header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--slate);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.page-header h1 span { color: var(--teal); }
+.page-header p {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── GRID ── */
+.contact-grid-main {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── INFO COLUMN ── */
+.info-col { display: flex; flex-direction: column; gap: 18px; }
+
+.info-card {
+  background: #fff;
+  border: 1px solid rgba(26,188,156,0.13);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(26,188,156,0.06);
+  transition: transform 0.22s, box-shadow 0.22s;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: infoIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.info-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,188,156,0.10); }
+.info-card:nth-child(1) { animation-delay: 0.2s; }
+.info-card:nth-child(2) { animation-delay: 0.32s; }
+.info-card:nth-child(3) { animation-delay: 0.44s; }
+.info-card:nth-child(4) { animation-delay: 0.56s; }
+@keyframes infoIn { to { opacity: 1; transform: translateX(0); } }
+
+.info-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(26,188,156,0.12), rgba(75,46,131,0.08));
+  border: 1px solid rgba(26,188,156,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.info-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--purple);
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.info-card p, .info-card a {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  display: block;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.info-card a:hover { color: var(--teal); }
+
+/* SOCIAL ROW */
+.social-row { display: flex; gap: 12px; margin-top: 4px; }
+.social-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid #e2e8f0;
+  color: var(--slate);
+  background: #fafafa;
+  transition: all 0.2s;
+}
+.social-chip:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26,188,156,0.12);
+}
+
+/* ── FORM COLUMN ── */
+.form-col {
+  background: #fff;
+  border: 1px solid rgba(26,188,156,0.13);
+  border-radius: 24px;
+  padding: 48px 44px;
+  box-shadow: 0 20px 60px rgba(26,188,156,0.07), 0 4px 6px rgba(0,0,0,0.02);
+  opacity: 0;
+  transform: translateX(20px);
+  animation: formIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s forwards;
+}
+@keyframes formIn { to { opacity: 1; transform: translateX(0); } }
+
+.form-col h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--slate);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+.form-col .form-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.cform-group { margin-bottom: 20px; }
+.cform-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #334155;
+  margin-bottom: 7px;
+}
+.cform-input {
+  width: 100%;
+  padding: 13px 16px;
+  background: #fafafa;
+  border: 1.5px solid #e8edf2;
+  border-radius: 12px;
+  font-size: 15px;
+  color: var(--slate);
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.cform-input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(26,188,156,0.10);
+}
+.cform-input::placeholder { color: #b0bec5; }
+.cform-input[rows] { resize: vertical; min-height: 130px; }
+
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.csend-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--teal) 0%, #16A085 50%, var(--purple) 100%);
+  background-size: 200% auto;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(26,188,156,0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.csend-btn:hover:not(:disabled) {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(26,188,156,0.32);
+}
+.csend-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+.c-spinner {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: cSpin 0.8s linear infinite;
+  display: none;
+}
+.csend-btn.loading .c-spinner { display: block; }
+@keyframes cSpin { to { transform: rotate(360deg); } }
+
+/* Success */
+.c-success {
+  display: none;
+  text-align: center;
+  padding: 40px 0 20px;
+  animation: fadeScale 0.55s cubic-bezier(0.2,0.8,0.2,1) forwards;
+}
+@keyframes fadeScale {
+  0% { opacity: 0; transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.c-success-icon {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(26,188,156,0.12), rgba(75,46,131,0.08));
+  border: 2px solid rgba(26,188,156,0.25);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+}
+.c-checkmark {
+  width: 36px; height: 36px;
+  stroke: var(--teal); stroke-width: 3;
+  stroke-dasharray: 48; stroke-dashoffset: 48;
+  animation: strokeDraw2 0.55s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+}
+@keyframes strokeDraw2 { 100% { stroke-dashoffset: 0; } }
+.c-success h3 { font-size: 22px; color: var(--slate); margin-bottom: 10px; }
+.c-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .contact-grid-main { grid-template-columns: 1fr; }
+  .form-col { padding: 36px 26px; }
+  .page-header h1 { font-size: 36px; }
+  .row-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLFFR9QK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="contact-bg"></div>
+<div class="contact-orb contact-orb-1"></div>
+<div class="contact-orb contact-orb-2"></div>
+
+<!-- NAV -->
+<header class="navbar">
+  <div class="container nav">
+    <button class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.navbar nav').classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html"><img src="images/app-mockup.png" class="full-logo" alt="Vallo Logo"></a>
+    <nav>
+      <a href="index.html#how">How it Works</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" style="color:#1ABC9C; font-weight:600;">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="beta.html" class="btn primary" style="text-decoration:none;">Join Beta</a>
+    </div>
+  </div>
+</header>
+
+<div class="contact-page">
+  <div class="contact-inner">
+
+    <!-- Header -->
+    <div class="page-header">
+      <span class="page-eyebrow">Get in Touch</span>
+      <h1>We'd Love to<br><span>Hear from You</span></h1>
+      <p>Whether it's a partnership, press inquiry, or just a question — our team is ready to respond.</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="contact-grid-main">
+
+      <!-- Info -->
+      <div class="info-col">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <h3>Our Office</h3>
+          <p>Runway Incubator</p>
+          <p>UPES Dehradun, India</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <h3>Email Us</h3>
+          <a href="mailto:vallo@vallo.in">vallo@vallo.in</a>
+          <a href="mailto:mayanksinghchouhan@vallo.in">mayanksinghchouhan@vallo.in</a>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <h3>Call Us</h3>
+          <a href="tel:+919460521377">+91 9460521377</a>
+          <p style="margin-top:6px; font-size:12px;">Mon–Sat, 10am–6pm IST</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🌐</div>
+          <h3>Follow Vallo</h3>
+          <div class="social-row">
+            <a href="https://www.instagram.com/vallo.in?igsh=MXR0NnBiZ3hrcnVwcA==" target="_blank" rel="noopener" class="social-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              Instagram
+            </a>
+            <a href="https://www.linkedin.com/company/vallo-mobility/?viewAsMember=true" target="_blank" rel="noopener" class="social-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-col">
+        <h2>Send a Message</h2>
+        <p class="form-sub">We typically respond within 24 hours on business days.</p>
+
+        <div id="cform-container">
+          <form id="contactForm">
+            <input type="hidden" name="form_type" value="Contact Message">
+
+            <div class="row-2">
+              <div class="cform-group">
+                <label for="c-name">Your Name</label>
+                <input id="c-name" type="text" name="name" class="cform-input" placeholder="Full name" required>
+              </div>
+              <div class="cform-group">
+                <label for="c-email">Email Address</label>
+                <input id="c-email" type="email" name="email" class="cform-input" placeholder="you@email.com" required>
+              </div>
+            </div>
+
+            <div class="cform-group">
+              <label for="c-subject">Subject</label>
+              <input id="c-subject" type="text" name="subject" class="cform-input" placeholder="What's this about?" required>
+            </div>
+
+            <div class="cform-group">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" name="message" class="cform-input" rows="5" placeholder="Tell us more..." required></textarea>
+            </div>
+
+            <button type="submit" class="csend-btn" id="cSubmitBtn">
+              <span id="c-btn-text">Send Message</span>
+              <div class="c-spinner"></div>
+            </button>
+          </form>
+        </div>
+
+        <div id="c-success" class="c-success">
+          <div class="c-success-icon">
+            <svg class="c-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+          </div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" style="padding:30px 20px; text-align:center; border-top:1px solid rgba(0,0,0,0.05);">
+  <p style="font-size:13px; color:#94a3b8;">© 2026 Vallo. Built for the future of mobility.</p>
+</footer>
+
+<script>
+// IMPORTANT: Replace with your Google Script URL below
+const contactScriptURL = 'https://script.google.com/macros/s/AKfycbwabpBgSmml7Beex7T1VOuyc7mTSgK7p6_Y79QfeIPrZA7p4bhw7xtLlsOfd6Hzwm4/exec';
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cSubmitBtn');
+  const btnText = document.getElementById('c-btn-text');
+
+  btn.classList.add('loading');
+  btn.disabled = true;
+  btnText.textContent = 'Sending...';
+
+  fetch(contactScriptURL, { method: 'POST', body: new FormData(this) })
+    .then(() => {
+      document.getElementById('cform-container').style.display = 'none';
+      document.getElementById('c-success').style.display = 'block';
+    })
+    .catch(err => {
+      console.error(err);
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      btnText.textContent = 'Send Message';
+      alert('Something went wrong. Please try again.');
+    });
+});
+
+document.querySelectorAll('.navbar nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.hamburger')?.classList.remove('active');
+    document.querySelector('.navbar nav')?.classList.remove('active');
+  });
+});
+</script>
+
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

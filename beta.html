@@ -11,339 +11,418 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join Beta | Vallo</title>
+<title>Join Vallo Beta | Early Access to Smart Mobility</title>
+<meta name="description" content="Be among the first to experience Vallo — India's smarter local mobility platform. Request early beta access now as a user, rider, or driver.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vallo.in/beta.html">
 
-<meta name="description" content="Join the Vallo Beta to experience smarter local mobility.">
+<meta property="og:title" content="Join Vallo Beta | Early Access">
+<meta property="og:description" content="Request early beta access to Vallo — smarter local mobility for India.">
+<meta property="og:url" content="https://vallo.in/beta.html">
+<meta property="og:image" content="https://vallo.in/images/logo.png">
 
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* BETA HERO / BG */
-body {
-  background: #f8fcfb;
-  position: relative;
-}
-.beta-bg {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(26,188,156,0.06), transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(75,46,131,0.04), transparent 50%);
-  z-index: -2;
-}
-.bg-glow {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(26,188,156,0.15), transparent 70%);
-  top: -100px;
-  right: -100px;
-  filter: blur(60px);
-  z-index: -1;
-  animation: glowPulse 5s infinite alternate;
+/* ── BETA PAGE PALETTE ── */
+:root {
+  --teal: #1ABC9C;
+  --teal-light: rgba(26,188,156,0.12);
+  --teal-mid: rgba(26,188,156,0.25);
+  --purple: #4B2E83;
+  --purple-light: rgba(75,46,131,0.08);
+  --slate: #0f172a;
+  --muted: #64748b;
+  --card-bg: #ffffff;
+  --page-bg: #f7fbf9;
 }
 
-/* BETA CONTAINER */
+body { background: var(--page-bg); }
+
+/* ── DECORATIVE BACKGROUND ── */
+.beta-bg {
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 20%, rgba(26,188,156,0.10), transparent),
+    radial-gradient(ellipse 50% 60% at 90% 80%, rgba(75,46,131,0.07), transparent),
+    #f7fbf9;
+}
+.beta-orb {
+  position: fixed; border-radius: 50%; filter: blur(70px); z-index: -1;
+  animation: orbFloat 8s ease-in-out infinite alternate;
+}
+.beta-orb-1 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(26,188,156,0.18), transparent 70%);
+  top: -120px; right: -100px;
+}
+.beta-orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(75,46,131,0.10), transparent 70%);
+  bottom: 0; left: -80px;
+  animation-delay: 3s;
+}
+@keyframes orbFloat {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-30px) scale(1.08); }
+}
+
+/* ── LAYOUT ── */
 .beta-section {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding-top: 80px;
+}
+
+/* ── LEFT PANEL ── */
+.beta-left {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 120px 20px 60px;
+  padding: 80px 60px 80px 80px;
+  position: relative;
 }
 
-.beta-card {
-  width: 100%;
-  max-width: 540px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 24px;
-  padding: 50px 40px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.4);
-  transform: translateY(20px);
-  opacity: 0;
-  animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-@keyframes slideUpFade {
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.beta-header {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(26,188,156,0.1);
-  color: #1ABC9C;
+.beta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-light);
+  border: 1px solid var(--teal-mid);
+  color: var(--teal);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
-  margin-bottom: 15px;
-  border: 1px solid rgba(26,188,156,0.2);
+  margin-bottom: 24px;
+  width: fit-content;
+}
+.beta-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--teal);
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
 }
 
-.beta-header h1 {
-  font-size: 36px;
-  color: #0f172a;
-  margin-bottom: 12px;
-  line-height: 1.2;
+.beta-left h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--slate);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+.beta-left h1 span { color: var(--teal); }
+
+.beta-left .lead {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 44px;
 }
 
-.beta-header p {
-  color: #475569;
-  font-size: 15px;
+/* ── STATS ROW ── */
+.beta-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 44px;
+}
+.beta-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.beta-stat .num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--slate);
+  letter-spacing: -1px;
+}
+.beta-stat .num span { color: var(--teal); }
+.beta-stat .lbl {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── FEATURE PILLS ── */
+.beta-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.beta-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--slate);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.beta-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(26,188,156,0.12); }
+.beta-pill .pill-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+}
+
+/* ── RIGHT PANEL (FORM CARD) ── */
+.beta-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 80px 80px 40px;
+}
+
+.beta-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border: 1px solid rgba(26,188,156,0.15);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow:
+    0 4px 6px rgba(0,0,0,0.02),
+    0 20px 60px rgba(26,188,156,0.08),
+    0 40px 80px rgba(75,46,131,0.05);
+  opacity: 0;
+  transform: translateY(28px);
+  animation: cardIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+}
+@keyframes cardIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-header { margin-bottom: 32px; }
+.card-header h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--slate);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.card-header p {
+  font-size: 14px;
+  color: var(--muted);
   line-height: 1.6;
 }
 
-/* FORM ELEMENTS */
-.form-group {
-  margin-bottom: 20px;
-}
-
+/* ── FORM ── */
+.form-group { margin-bottom: 18px; }
 .form-group label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: #334155;
-  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
 }
-
 .form-input {
   width: 100%;
-  padding: 14px 16px;
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.08);
+  padding: 13px 16px;
+  background: #fafafa;
+  border: 1.5px solid #e8edf2;
   border-radius: 12px;
   font-size: 15px;
-  color: #0f172a;
-  transition: all 0.3s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  color: var(--slate);
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
-
 .form-input:focus {
   outline: none;
-  border-color: #1ABC9C;
-  box-shadow: 0 0 0 3px rgba(26,188,156,0.15);
+  background: #fff;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(26,188,156,0.10);
 }
+.form-input::placeholder { color: #b0bec5; }
 
-.form-input::placeholder {
-  color: #94a3b8;
+/* ── ROLE CARDS ── */
+.role-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
-
-/* ROLE SELECTION */
 .role-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 5px;
+  gap: 10px;
 }
-
 .role-card {
   position: relative;
   cursor: pointer;
 }
-
-.role-card input {
+.role-card input[type="radio"] {
   position: absolute;
   opacity: 0;
-  cursor: pointer;
+  width: 0; height: 0;
+  pointer-events: none;
 }
-
 .role-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px 10px;
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 12px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  gap: 8px;
+  padding: 18px 10px;
+  background: #fafafa;
+  border: 1.5px solid #e8edf2;
+  border-radius: 14px;
+  transition: all 0.22s ease;
+  user-select: none;
 }
-
-.role-content svg {
-  margin-bottom: 8px;
-  stroke: #64748b;
-  transition: 0.2s;
-}
-
-.role-content span {
+.role-content svg { stroke: #94a3b8; transition: stroke 0.22s; }
+.role-content .role-name {
   font-size: 13px;
-  font-weight: 600;
-  color: #475569;
-  transition: 0.2s;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: color 0.22s;
 }
 
+/* Selected state — teal + purple, NO blue */
 .role-card input:checked + .role-content {
-  border-color: #1ABC9C;
-  background: rgba(26,188,156,0.03);
-  box-shadow: 0 4px 12px rgba(26,188,156,0.1);
+  background: linear-gradient(135deg, rgba(26,188,156,0.06), rgba(75,46,131,0.06));
+  border-color: var(--teal);
+  box-shadow: 0 4px 16px rgba(26,188,156,0.15);
+}
+.role-card input:checked + .role-content svg { stroke: var(--teal); }
+.role-card input:checked + .role-content .role-name { color: var(--purple); font-weight: 800; }
+
+.role-card:hover .role-content:not(.role-card input:checked + .role-content) {
+  border-color: rgba(26,188,156,0.35);
+  background: #f0fdf9;
 }
 
-.role-card input:checked + .role-content svg {
-  stroke: #1ABC9C;
-}
-
-.role-card input:checked + .role-content span {
-  color: #1ABC9C;
-}
-
-.role-card:hover .role-content {
-  border-color: rgba(26,188,156,0.4);
-}
-
-/* SUBMIT BUTTON */
+/* ── SUBMIT ── */
 .submit-btn {
   width: 100%;
+  margin-top: 22px;
   padding: 16px;
-  margin-top: 25px;
-  background: linear-gradient(45deg, #1ABC9C, #16A085);
-  color: white;
+  background: linear-gradient(135deg, var(--teal) 0%, #16A085 50%, var(--purple) 100%);
+  background-size: 200% auto;
+  color: #fff;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  box-shadow: 0 8px 20px rgba(26,188,156,0.25);
+  letter-spacing: 0.3px;
+  transition: background-position 0.4s ease, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(26,188,156,0.28);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
-
 .submit-btn:hover:not(:disabled) {
+  background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(26,188,156,0.3);
+  box-shadow: 0 14px 32px rgba(26,188,156,0.32);
 }
-
-.submit-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255,255,255,0.3);
-  border-top-color: white;
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-left: 10px;
+  animation: spin 0.8s linear infinite;
   display: none;
 }
+.submit-btn.loading .spinner { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.submit-btn.loading .spinner {
-  display: inline-block;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* SUCCESS SCREEN */
+/* ── SUCCESS ── */
 .success-screen {
   display: none;
   text-align: center;
   padding: 20px 0;
-  animation: fadeInScale 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: fadeScale 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-
-@keyframes fadeInScale {
-  0% { opacity: 0; transform: scale(0.95); }
+@keyframes fadeScale {
+  0% { opacity: 0; transform: scale(0.94); }
   100% { opacity: 1; transform: scale(1); }
 }
-
 .success-icon {
-  width: 80px;
-  height: 80px;
+  width: 80px; height: 80px;
   border-radius: 50%;
-  background: rgba(26,188,156,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 25px;
+  background: linear-gradient(135deg, rgba(26,188,156,0.12), rgba(75,46,131,0.08));
+  border: 2px solid var(--teal-mid);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
 }
-
 .checkmark {
-  width: 40px;
-  height: 40px;
-  stroke: #1ABC9C;
-  stroke-width: 3;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+  width: 38px; height: 38px;
+  stroke: var(--teal); stroke-width: 3;
+  stroke-dasharray: 48; stroke-dashoffset: 48;
+  animation: strokeDraw 0.55s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
 }
-
-@keyframes stroke {
-  100% { stroke-dashoffset: 0; }
-}
-
-.success-screen h2 {
-  font-size: 32px;
-  color: #0f172a;
-  margin-bottom: 12px;
-  margin-top: 0;
-}
-
-.success-screen p.main-text {
-  font-size: 18px;
-  color: #1ABC9C;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.success-screen p.sub-text {
-  font-size: 15px;
-  color: #64748b;
-  margin-bottom: 35px;
-  line-height: 1.6;
-}
-
+@keyframes strokeDraw { 100% { stroke-dashoffset: 0; } }
+.success-screen h2 { font-size: 26px; color: var(--slate); margin-bottom: 10px; margin-top: 0; text-align: center; }
+.success-screen .s-main { font-size: 15px; color: var(--teal); font-weight: 600; margin-bottom: 8px; }
+.success-screen .s-sub { font-size: 14px; color: var(--muted); margin-bottom: 30px; line-height: 1.6; }
 .back-home-btn {
   display: inline-flex;
-  background: #f1f5f9;
-  color: #0f172a;
-  padding: 14px 28px;
+  background: linear-gradient(135deg, rgba(26,188,156,0.08), rgba(75,46,131,0.06));
+  border: 1px solid rgba(26,188,156,0.2);
+  color: var(--slate);
+  padding: 12px 26px;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.22s;
 }
+.back-home-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26,188,156,0.15); }
 
-.back-home-btn:hover {
-  background: #e2e8f0;
-  transform: translateY(-2px);
-}
-
-@media(max-width: 600px) {
-  .beta-card {
-    padding: 35px 25px;
-  }
-  .beta-header h1 {
-    font-size: 28px;
-  }
-  .role-grid {
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .beta-section {
     grid-template-columns: 1fr;
+    padding-top: 90px;
   }
-  .role-content {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 12px 16px;
+  .beta-left {
+    padding: 60px 30px 40px;
+    text-align: center;
+    align-items: center;
   }
-  .role-content svg {
-    margin-bottom: 0;
-    margin-right: 12px;
+  .beta-left h1 { font-size: 38px; }
+  .beta-right {
+    padding: 0 20px 60px;
+    justify-content: center;
   }
+  .beta-stats { justify-content: center; }
+  .beta-features { justify-content: center; }
+  .beta-left .lead { max-width: 100%; }
+}
+@media (max-width: 520px) {
+  .beta-card { padding: 32px 22px; }
+  .beta-left h1 { font-size: 32px; }
+  .role-grid { grid-template-columns: 1fr; }
+  .role-content { flex-direction: row; justify-content: flex-start; padding: 13px 16px; }
+  .role-content svg { margin-right: 4px; }
 }
 </style>
 </head>
@@ -351,25 +430,23 @@ body {
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLFFR9QK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <div class="beta-bg"></div>
-<div class="bg-glow"></div>
+<div class="beta-orb beta-orb-1"></div>
+<div class="beta-orb beta-orb-2"></div>
 
 <!-- NAV -->
 <header class="navbar">
   <div class="container nav">
     <button class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.navbar nav').classList.toggle('active')" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     <a href="index.html"><img src="images/app-mockup.png" class="full-logo" alt="Vallo Logo"></a>
     <nav>
       <a href="index.html#how">How it Works</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
       <a href="index.html" class="btn primary" style="text-decoration:none;">Back to Home</a>
@@ -377,159 +454,201 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
+<!-- MAIN -->
+<main>
 <section class="beta-section">
-  <div class="beta-card">
-    
-    <div id="form-container">
-      <div class="beta-header">
-        <span class="badge">EARLY ACCESS</span>
-        <h1>Join the Vallo Beta</h1>
-        <p>Be among the first users to experience smarter local mobility with Vallo.</p>
+
+  <!-- LEFT: Hero copy -->
+  <div class="beta-left">
+    <span class="beta-badge">
+      <span class="beta-badge-dot"></span>
+      Early Access Open
+    </span>
+
+    <h1>Be the First to<br>Ride with <span>Vallo</span></h1>
+
+    <p class="lead">
+      Vallo is reimagining how India moves — smarter routes, live tracking, and unified local transport.
+      Join our beta and shape the future of mobility from the ground up.
+    </p>
+
+    <div class="beta-stats">
+      <div class="beta-stat">
+        <div class="num" id="statUsers">0<span>+</span></div>
+        <div class="lbl">Beta Signups</div>
       </div>
-
-      <form id="betaForm">
-        <input type="hidden" name="form_type" value="Beta Request">
-        
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" class="form-input" placeholder="Enter your full name" required>
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" class="form-input" placeholder="Enter your email address" required>
-        </div>
-
-        <div class="form-group">
-          <label>City</label>
-          <input type="text" name="city" class="form-input" placeholder="Your city" required>
-        </div>
-
-        <div class="form-group">
-          <label>I'm interested as</label>
-          <div class="role-grid">
-            <label class="role-card">
-              <input type="radio" name="role" value="User" required>
-              <div class="role-content">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span>User</span>
-              </div>
-            </label>
-            <label class="role-card">
-              <input type="radio" name="role" value="Rider" required>
-              <div class="role-content">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V10h-1.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H16v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V13h1.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/><path d="M5.5 13c-.83 0-1.5-.67-1.5-1.5V8.5C4 7.67 4.67 7 5.5 7S7 7.67 7 8.5v3c0 .83-.67 1.5-1.5 1.5z"/><path d="M11 15c0 3.31-2.69 6-6 6H4v-1c0-2.76 2.24-5 5-5h2v-1z"/><path d="M15 21h-2v-1c0-2.76 2.24-5 5-5h2v1c0 2.76-2.24 5-5 5z"/></svg>
-                <span>Rider</span>
-              </div>
-            </label>
-            <label class="role-card">
-              <input type="radio" name="role" value="Driver" required>
-              <div class="role-content">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
-                <span>Driver</span>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-          Request Beta Access <div class="spinner"></div>
-        </button>
-      </form>
+      <div class="beta-stat">
+        <div class="num" id="statCities">0<span>+</span></div>
+        <div class="lbl">Cities</div>
+      </div>
+      <div class="beta-stat">
+        <div class="num" id="statAccuracy">0<span>%</span></div>
+        <div class="lbl">Satisfaction</div>
+      </div>
     </div>
 
-    <!-- Success Screen -->
-    <div id="success-screen" class="success-screen">
-      <div class="success-icon">
-        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-          <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-        </svg>
-      </div>
-      <h2>You're on the list!</h2>
-      <p class="main-text">The Vallo beta version will be shared with you soon.</p>
-      <p class="sub-text">Thank you for joining the future of local mobility.</p>
-      <a href="index.html" class="back-home-btn">Back to Home</a>
+    <div class="beta-features">
+      <div class="beta-pill"><span class="pill-dot"></span>Live GPS Tracking</div>
+      <div class="beta-pill"><span class="pill-dot"></span>AI Route Optimization</div>
+      <div class="beta-pill"><span class="pill-dot"></span>Multi-Modal Transport</div>
+      <div class="beta-pill"><span class="pill-dot"></span>Cashless Payments</div>
     </div>
-
   </div>
-</section>
 
-<!-- Script to handle form submission via FormSubmit AJAX -->
+  <!-- RIGHT: Form card -->
+  <div class="beta-right">
+    <div class="beta-card">
+
+      <div id="form-container">
+        <div class="card-header">
+          <h2>Request Beta Access</h2>
+          <p>Fill in your details and we'll reach out with your invite link.</p>
+        </div>
+
+        <form id="betaForm">
+          <input type="hidden" name="form_type" value="Beta Request">
+
+          <div class="form-group">
+            <label for="beta-name">Full Name</label>
+            <input id="beta-name" type="text" name="name" class="form-input" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="beta-email">Email Address</label>
+            <input id="beta-email" type="email" name="email" class="form-input" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="beta-city">Your City</label>
+            <input id="beta-city" type="text" name="city" class="form-input" placeholder="Dehradun, Jaipur..." required>
+          </div>
+
+          <div class="form-group">
+            <span class="role-label">I'm interested as</span>
+            <div class="role-grid" role="radiogroup">
+              <label class="role-card" id="role-user">
+                <input type="radio" name="role" value="User" required>
+                <div class="role-content">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
+                  <span class="role-name">User</span>
+                </div>
+              </label>
+              <label class="role-card" id="role-rider">
+                <input type="radio" name="role" value="Rider" required>
+                <div class="role-content">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="5" r="2"/><path d="M12 7v7"/><path d="M7 14h10l-1 5H8l-1-5z"/>
+                  </svg>
+                  <span class="role-name">Rider</span>
+                </div>
+              </label>
+              <label class="role-card" id="role-driver">
+                <input type="radio" name="role" value="Driver" required>
+                <div class="role-content">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                  </svg>
+                  <span class="role-name">Driver</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span id="btn-text">Request Beta Access</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+      </div>
+
+      <!-- Success -->
+      <div id="success-screen" class="success-screen">
+        <div class="success-icon">
+          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <h2>You're on the list!</h2>
+        <p class="s-main">We'll send your beta invite soon.</p>
+        <p class="s-sub">Thank you for joining the future of local mobility with Vallo.</p>
+        <a href="index.html" class="back-home-btn">← Back to Home</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</main>
+
 <script>
-// Check for success parameter in URL to show success screen
-window.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('success') === 'true') {
-    document.getElementById('form-container').style.display = 'none';
-    document.getElementById('success-screen').style.display = 'block';
-    
-    // Remove the query param from URL without refreshing
-    const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-    window.history.pushState({path:newurl},'',newurl);
-  }
-});
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el, target, duration, suffix) {
+  let start = 0, step = target / (duration / 16);
+  const run = () => {
+    start += step;
+    if (start >= target) { el.innerHTML = target + '<span>' + suffix + '</span>'; return; }
+    el.innerHTML = Math.floor(start) + '<span>' + suffix + '</span>';
+    requestAnimationFrame(run);
+  };
+  run();
+}
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('statUsers'), 200, 1200, '+');
+      animateCounter(document.getElementById('statCities'), 5, 900, '+');
+      animateCounter(document.getElementById('statAccuracy'), 98, 1000, '%');
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+statsObserver.observe(document.querySelector('.beta-stats'));
+
+/* ── FORM SUBMIT ── */
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwabpBgSmml7Beex7T1VOuyc7mTSgK7p6_Y79QfeIPrZA7p4bhw7xtLlsOfd6Hzwm4/exec';
 
 document.getElementById('betaForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const form = this;
   const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btn-text');
   const role = this.querySelector('input[name="role"]:checked').value;
-  
-  // PASTE YOUR GOOGLE SCRIPT URL HERE
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwabpBgSmml7Beex7T1VOuyc7mTSgK7p6_Y79QfeIPrZA7p4bhw7xtLlsOfd6Hzwm4/exec'; 
 
-  // Set loading state
   btn.classList.add('loading');
   btn.disabled = true;
-  btn.childNodes[0].nodeValue = "Submitting... ";
+  btnText.textContent = 'Submitting...';
 
-  // Push GA4 event
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'event': 'beta_form_submit',
-    'page_location': window.location.href,
-    'user_type': role
-  });
+  window.dataLayer.push({ event: 'beta_form_submit', page_location: location.href, user_type: role });
 
-  fetch(scriptURL, { 
-    method: 'POST', 
-    body: new FormData(form)
-  })
-  .then(response => {
-    document.getElementById('form-container').style.display = 'none';
-    document.getElementById('success-screen').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
-  .catch(error => {
-    console.error('Error!', error.message);
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    btn.childNodes[0].nodeValue = "Request Beta Access";
-    alert('Submission failed. Please check your internet or try again later.');
-  });
+  fetch(scriptURL, { method: 'POST', body: new FormData(this) })
+    .then(() => {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(err => {
+      console.error(err);
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      btnText.textContent = 'Request Beta Access';
+      alert('Submission failed. Please try again.');
+    });
 });
 
-// Close mobile menu when a nav link is clicked
+/* ── MOBILE NAV CLOSE ── */
 document.querySelectorAll('.navbar nav a').forEach(link => {
   link.addEventListener('click', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.navbar nav');
-    if (hamburger && nav) {
-      hamburger.classList.remove('active');
-      nav.classList.remove('active');
-    }
+    document.querySelector('.hamburger')?.classList.remove('active');
+    document.querySelector('.navbar nav')?.classList.remove('active');
   });
 });
 </script>
 
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-
 </body>
 </html>
