@@ -462,44 +462,93 @@ nav a:hover {
     height: 240px;
   }
 }
-/* CTA */
+/* CTA SECTION - PREMIUM REDESIGN */
 .cta {
-  padding: 140px 20px;
-  background: linear-gradient(45deg,#1ABC9C,#4B2E83);
+  padding: 120px 20px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  background: #0f172a;
 }
 
-.cta h2 {
-  margin-bottom: 20px;
-  color: white;
+/* Dynamic background glow */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(26,188,156,0.3) 0%, rgba(75,46,131,0.2) 50%, transparent 80%);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  animation: pulseGlow 6s infinite alternate;
+  z-index: 1;
 }
 
-/* INNER WRAPPER */
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+/* INNER WRAPPER - Glassmorphism */
 .cta-inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 25px;
-  max-width: 700px;
+  max-width: 800px;
+  padding: 60px 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 /* HEADING */
 .cta-inner h2 {
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.15;
   margin: 0;
+  color: #ffffff;
+  letter-spacing: -1px;
 }
 
 /* BUTTON */
 .cta-inner .big {
-  padding: 16px 30px;
+  padding: 18px 36px;
   font-size: 16px;
+  font-weight: 700;
   border-radius: 12px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 25px rgba(26,188,156,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-inner .big:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(26,188,156,0.4);
+}
+
+@media(max-width: 768px) {
+  .cta {
+    padding: 80px 20px;
+  }
+  .cta-inner {
+    padding: 40px 20px;
+  }
+  .cta-inner h2 {
+    font-size: 32px;
+  }
 }
 
 /* CONTACT */
