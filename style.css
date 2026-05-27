@@ -1405,6 +1405,7 @@ p {
 
 img.avatar {
   object-fit: cover;
+  object-position: top center;
   background: #ffffff;
   padding: 3px;
   border: 2px solid rgba(26,188,156,0.2);
