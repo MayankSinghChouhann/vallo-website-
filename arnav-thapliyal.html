@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NLFFR9QK');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Arnav Thapliyal - Co-Founder & Operations & Strategy of Vallo</title>
+<meta name="description" content="Arnav Thapliyal is the Co-Founder & Operations & Strategy of Vallo, a smart mobility startup focused on improving local transportation accessibility in India.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<meta property="og:title" content="Arnav Thapliyal - Co-Founder & Operations & Strategy of Vallo">
+<meta property="og:description" content="Founder of Vallo, building smarter local transportation solutions in India.">
+<meta property="og:image" content="https://vallo.in/images/logo.png">
+<meta property="og:url" content="https://vallo.in/mayank-singh-chouhan.html">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vallo.in/mayank-singh-chouhan.html">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* FOUNDER PAGE SPECIFIC STYLES */
+body {
+  background: #f8fcfb; /* Slightly teal-tinted background */
+}
+
+/* Add an animated subtle gradient mesh background */
+.founder-page-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: radial-gradient(circle at 15% 50%, rgba(26,188,156,0.06), transparent 50%),
+              radial-gradient(circle at 85% 30%, rgba(75,46,131,0.04), transparent 50%);
+}
+
+.founder-hero {
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.founder-info {
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.founder-info h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  color: #0f172a;
+  background: linear-gradient(135deg, #0f172a 0%, #4B2E83 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.founder-info .role {
+  font-size: 20px;
+  color: #1ABC9C;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.founder-info p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #475569;
+  margin-bottom: 30px;
+}
+
+/* AVATAR FLOATING & GLOW */
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,188,156,0.3), transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.founder-avatar-large {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1), 0 0 0 8px rgba(255,255,255,0.8);
+  margin: auto;
+  display: block;
+  background: #ffffff;
+  border: 2px solid rgba(26,188,156,0.2);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
+  animation: floatAvatar 6s ease-in-out infinite;
+}
+
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.founder-avatar-large:hover {
+  transform: translateY(-20px) scale(1.05);
+  box-shadow: 0 40px 80px rgba(26,188,156,0.3), 0 0 0 12px rgba(255,255,255,0.9);
+}
+
+.connect-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* GLASSMORPHISM CARD */
+.content-section {
+  padding: 60px 0 120px;
+}
+
+.content-card {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.5);
+  transition: transform 0.4s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+}
+
+.content-card h2 {
+  text-align: left;
+  margin-bottom: 25px;
+  color: #0f172a;
+  font-size: 32px;
+  position: relative;
+  display: inline-block;
+}
+
+.content-card h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1ABC9C, #4B2E83);
+  border-radius: 2px;
+}
+
+.content-card h3 {
+  color: #0f172a;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.content-card p {
+  line-height: 1.9;
+  margin-bottom: 20px;
+  color: #475569;
+  font-size: 17px;
+}
+
+.content-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.content-card ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.content-card ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #1ABC9C;
+  font-size: 14px;
+}
+
+.content-card em {
+  display: block;
+  font-size: 20px;
+  color: #4B2E83;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 50px;
+  padding: 30px;
+  background: linear-gradient(to right, rgba(26,188,156,0.05), rgba(75,46,131,0.05));
+  border-radius: 16px;
+  border-left: 4px solid #1ABC9C;
+}
+
+@media(max-width: 900px){
+  .founder-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .founder-info h1 {
+    font-size: 42px;
+  }
+  
+  .content-card h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .content-card h2 {
+    text-align: center;
+    display: block;
+  }
+
+  .connect-buttons {
+    justify-content: center;
+  }
+  
+  .content-card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .founder-avatar-large {
+    width: 260px;
+    height: 260px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLFFR9QK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="founder-page-bg"></div>
+<div class="bg-glow"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav">
+    <button class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.navbar nav').classList.toggle('active')" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a href="index.html"><img src="images/app-mockup.png" class="full-logo" alt="Vallo Logo"></a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Vallo</a>
+      <a href="#about">About Founder</a>
+      <a href="#vision">Vision</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="mailto:vallo@vallo.in" class="btn glow" style="text-decoration:none;">Contact Me</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="founder-hero">
+  <div class="container founder-grid">
+    <div class="avatar-container">
+      <img class="founder-avatar-large" src="images/arnav.png" alt="Arnav Thapliyal">
+    </div>
+
+    <div class="founder-info">
+      <div class="tag">MEET THE FOUNDER</div>
+      <h1>Arnav Thapliyal</h1>
+      <div class="role">Co-Founder & Operations & Strategy, Vallo</div>
+      
+      <p>
+        Arnav Thapliyal is the founding mind behind Vallo and a student entrepreneur driven by the mission of transforming local transportation across India.
+      </p>
+      
+      <div class="connect-buttons">
+        <a href="mailto:vallo@vallo.in" class="btn primary" style="text-decoration:none;">Connect via Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT SECTIONS -->
+<section class="content-section" id="about">
+  <div class="container">
+    
+    <div class="content-card">
+      <h2>About the Founder</h2>
+      <p>
+        As a student at UPES Dehradun, Arnav experienced firsthand the challenges of daily commuting. The lack of reliable, connected, and safe transportation systems in non-metro cities led him to ask a critical question: Why should advanced mobility technology be restricted to premium urban markets?
+      </p>
+      <p>
+        This question sparked the creation of Vallo. With a deep passion for problem-solving and a hands-on approach to both product design and technology development, Arnav is committed to building a smarter mobility ecosystem for the everyday Indian commuter.
+      </p>
+
+      <h3 id="vision">Vision for Vallo & Future Goals</h3>
+      <p>
+        Arnav's vision for Vallo extends beyond just a booking app. It's about creating a unified mobility platform that brings transparency, efficiency, and safety to local travel. 
+      </p>
+      <ul>
+        <li><strong>Short-term goal:</strong> Optimize the Dehradun–Haridwar–Rishikesh–Roorkee corridor, ensuring reliable tracking and shared rides for students and professionals.</li>
+        <li><strong>Long-term goal:</strong> Scale the platform across Tier 2 and Tier 3 cities in India, creating a sustainable and accessible transportation infrastructure.</li>
+        <li><strong>Impact:</strong> Reduce commute anxiety, lower transportation costs through GoShare, and empower local transit networks with smart tech.</li>
+      </ul>
+
+      <h3>Journey, Skills, & Technology Involvement</h3>
+      <p>
+        Building Vallo from the ground up required a multidisciplinary approach. Arnav actively bridges the gap between technical execution and strategic business goals.
+      </p>
+      <ul>
+        <li><strong>Product Architecture:</strong> Led the conceptualization of core systems like GoShare, real-time tracking, and emergency safety features.</li>
+        <li><strong>User-Centric Design:</strong> Focused on creating an intuitive, accessible interface that works seamlessly for users of all technical proficiencies.</li>
+        <li><strong>Strategic Leadership:</strong> Driving partnerships, defining the product roadmap, and cultivating a team passionate about mobility innovation.</li>
+      </ul>
+      
+      <p>
+        <em>"Transportation is not a luxury. It is a right — and it should work for everyone."</em>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Vallo</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/vallo.india/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/company/vallo-mobility/?viewAsMember=true" target="_blank">LinkedIn</a>
+    <a href="https://x.com/ValloMobility" target="_blank">X</a>
+  </div>
+
+  <p class="copyright">
+    © 2026 Vallo. Built for the future of mobility.
+  </p>
+</footer>
+
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<script>
+// Close mobile menu when a nav link is clicked
+document.querySelectorAll('.navbar nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.navbar nav');
+    if (hamburger && nav) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
